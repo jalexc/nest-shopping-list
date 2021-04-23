@@ -2,12 +2,15 @@ import { Controller, Get, Post, Body, Patch, Param, Delete } from '@nestjs/commo
 import { ItemService } from './item.service';
 import { CreateItemDto } from './dto/create-item.dto';
 import { UpdateItemDto } from './dto/update-item.dto';
+import { ApiOperation, ApiResponse } from '@nestjs/swagger';
 
 @Controller('item')
 export class ItemController {
   constructor(private readonly itemService: ItemService) {}
 
   @Post()
+  @ApiOperation({ summary: 'Create item' })
+  @ApiResponse({ status: 201, description: 'Created item' })
   create(@Body() createItemDto: CreateItemDto) {
     return this.itemService.create(createItemDto);
   }
