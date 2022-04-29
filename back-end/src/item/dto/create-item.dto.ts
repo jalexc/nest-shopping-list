@@ -7,7 +7,10 @@ export class CreateItemDto {
   @IsNotEmpty()
   name: string;
 
-  @ApiPropertyOptional({ example: 'Cavendish bananas', description: 'Optional description of the item' })
+  @ApiPropertyOptional({
+    example: 'Cavendish bananas',
+    description: 'Optional description of the item',
+  })
   @IsOptional()
   @IsString()
   description: string;

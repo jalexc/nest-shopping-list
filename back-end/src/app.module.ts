@@ -16,11 +16,16 @@ import { ItemModule } from './item/item.module';
       password: process.env.DB_PASSWORD,
       database: process.env.DB_DATABASE,
       entities: [__dirname + '/**/*.entity{.ts,.js}'],
-      synchronize: (process.env.DB_SYNCHRONIZE === 'true'),
+      synchronize: process.env.DB_SYNCHRONIZE === 'true',
+      ssl: {
+        rejectUnauthorized: false,
+      },
+      logger: 'advanced-console',
+      logging: true,
     }),
     ItemModule,
   ],
   controllers: [AppController],
   providers: [AppService],
 })
-export class AppModule { }
+export class AppModule {}
